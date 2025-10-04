@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.models.Wallet;
 import com.example.demo.repository.WalletRepository;
 import com.example.demo.service.saga.SagaContext;
-import com.example.demo.service.saga.SagaStep;
+import com.example.demo.service.saga.SagaStepInterface;
 
 
 import jakarta.transaction.Transactional;
@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class CreditDestinationWalletStep implements SagaStep {
+public class CreditDestinationWalletStep implements SagaStepInterface {
 	 
     private final WalletRepository walletRepository;
 

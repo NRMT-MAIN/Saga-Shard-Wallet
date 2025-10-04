@@ -6,7 +6,7 @@ import com.example.demo.helpers.enums.TransactionStatus;
 import com.example.demo.models.Transaction;
 import com.example.demo.repository.TransactionRepository;
 import com.example.demo.service.saga.SagaContext;
-import com.example.demo.service.saga.SagaStep;
+import com.example.demo.service.saga.SagaStepInterface;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,10 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class UpdateTransactionStatusStep implements SagaStep {
+public class UpdateTransactionStatusStep implements SagaStepInterface{
 	private final TransactionRepository transactionRepository;
     
-    @Override
+	@Override
     public boolean execute(SagaContext context) {
         Long transactionId = context.getLong("transactionId");
 
@@ -36,7 +36,6 @@ public class UpdateTransactionStatusStep implements SagaStep {
         context.put("transactionStatusAfterUpdate", transaction.getStatus());
 
         log.info("Update transaction status step executed successfully");
-
 
         
         return true;
@@ -65,6 +64,4 @@ public class UpdateTransactionStatusStep implements SagaStep {
     public String getStepName() {
         return "UpdateTransactionStatus";
     }
-    //Test
-    //test
 }
