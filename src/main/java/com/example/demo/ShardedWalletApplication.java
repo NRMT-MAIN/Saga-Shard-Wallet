@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ShardedWalletApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ShardedWalletApplication.class, args);
+
+        SpringApplication.run(ShardedWalletApplication.class, args);
 	}
 
 }

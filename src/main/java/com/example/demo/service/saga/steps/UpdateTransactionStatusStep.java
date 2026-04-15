@@ -62,6 +62,7 @@ public class UpdateTransactionStatusStep implements SagaStepInterface{
 
     @Override
     public String getStepName() {
-        return "UpdateTransactionStatus";
+
+        return SagaStepFactory.SagaStepType.UPDATE_TRANSACTION_STATUS_STEP.toString();
     }
 }

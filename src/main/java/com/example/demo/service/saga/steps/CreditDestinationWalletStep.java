@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 public class CreditDestinationWalletStep implements SagaStepInterface {
-	 
+
     private final WalletRepository walletRepository;
 
     @Override
@@ -74,6 +74,6 @@ public class CreditDestinationWalletStep implements SagaStepInterface {
 
     @Override
     public String getStepName() {
-        return "CreditDestinationWalletStep";
+        return SagaStepFactory.SagaStepType.CREDIT_DESTINATION_WALLET_STEP.toString();
     }
 }

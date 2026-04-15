@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import lombok.Builder;
 import org.apache.calcite.model.JsonType;
 
 import com.example.demo.helpers.enums.SagaStatus;
@@ -20,6 +21,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "saga_instance")
@@ -29,7 +31,7 @@ public class SagaInstance {
 	 private Long id;
 	 
 	 @Enumerated(EnumType.STRING)
-	 @Column(name = "status", nullable = false)
+	 @Column(name = "status")
 	 private SagaStatus status = SagaStatus.STARTED;
 
 	 @Type(JsonType.class)
