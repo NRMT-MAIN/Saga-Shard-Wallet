@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.models.User;
-import com.example.demo.service.UserService;
+import com.example.demo.service.IUserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,23 +22,23 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserController {
 	
-	private final UserService userService ; 
+	private final IUserService IUserService;
 	
 	@PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        User newUser = userService.createUser(user);
+        User newUser = IUserService.createUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
-        User user = userService.getUserById(id);
+        User user = IUserService.getUserById(id);
         return ResponseEntity.ok(user);
     }
 
     @GetMapping("/name")
     public ResponseEntity<List<User>> getUsersByName(@RequestParam(name = "name") String name) {
-        List<User> users = userService.getUsersByName(name);
+        List<User> users = IUserService.getUsersByName(name);
         return ResponseEntity.ok(users);
     }
 }

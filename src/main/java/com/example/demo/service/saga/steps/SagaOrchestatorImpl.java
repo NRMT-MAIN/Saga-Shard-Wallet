@@ -15,9 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -104,6 +102,7 @@ public class SagaOrchestatorImpl implements SagaOrchestator {
     }
 
     @Override
+    @Transactional
     public boolean compensateStep(Long sagaInstanceId, String stepName) {
         SagaInstance sagaInstance = sagaInstanceRepository.findById(sagaInstanceId)
                 .orElseThrow(() -> new RuntimeException("Saga instance not found with id: " + sagaInstanceId));
@@ -161,6 +160,7 @@ public class SagaOrchestatorImpl implements SagaOrchestator {
     }
 
     @Override
+    @Transactional
     public void compensateSaga(Long sagaInstanceId) {
         SagaInstance sagaInstance = sagaInstanceRepository.findById(sagaInstanceId)
                 .orElseThrow(() -> new RuntimeException("Saga instance not found with id: " + sagaInstanceId));
@@ -192,6 +192,7 @@ public class SagaOrchestatorImpl implements SagaOrchestator {
     }
 
     @Override
+    @Transactional
     public void failSaga(Long sagaInstanceId) {
         SagaInstance sagaInstance = sagaInstanceRepository.findById(sagaInstanceId)
                 .orElseThrow(() -> new RuntimeException("Saga instance not found with id: " + sagaInstanceId));
@@ -202,6 +203,7 @@ public class SagaOrchestatorImpl implements SagaOrchestator {
     }
 
     @Override
+    @Transactional
     public void completeSaga(Long sagaInstanceId) {
         	SagaInstance sagaInstance = sagaInstanceRepository.findById(sagaInstanceId)
                     .orElseThrow(() -> new RuntimeException("Saga instance not found with id: " + sagaInstanceId));
