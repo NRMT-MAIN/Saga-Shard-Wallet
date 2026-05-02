@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @Builder
-@Table(name = "user")
+@Table(name = "wallet")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Wallet {
