@@ -199,6 +199,8 @@ public class SagaOrchestatorImpl implements SagaOrchestator {
 
         sagaInstance.setStatus(SagaStatus.FAILED);
         sagaInstanceRepository.save(sagaInstance);
+
+        compensateSaga(sagaInstanceId);
         log.info("Saga instance {} marked as failed", sagaInstanceId);
     }
 

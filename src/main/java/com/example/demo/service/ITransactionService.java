@@ -20,4 +20,6 @@ public interface ITransactionService {
     List<Transaction> getTransactionBySagaInstanceId(Long sagaInstanceId) ;
 
     List<Transaction> getTransactionByStatus(TransactionStatus status) ;
+
+    void updateTransactionWithSagaInstanceId(Long transactionId, Long sagaInstanceId) ;
 }
