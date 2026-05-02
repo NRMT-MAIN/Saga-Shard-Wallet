@@ -10,7 +10,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.example.demo.models.SagaStep;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface SagaStepRepository extends JpaRepository<SagaStep, Long> {
 	List<SagaStep> findBySagaInstanceId(Long sagaInstanceId);
 

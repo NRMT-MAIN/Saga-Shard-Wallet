@@ -11,7 +11,9 @@ import org.springframework.data.repository.query.Param;
 import com.example.demo.models.Wallet;
 
 import jakarta.persistence.LockModeType;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface WalletRepository extends JpaRepository<Wallet, Long> {
 	List<Wallet> findByUserId(Long userId);
 

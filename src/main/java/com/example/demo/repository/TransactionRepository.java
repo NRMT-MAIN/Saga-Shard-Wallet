@@ -8,7 +8,9 @@ import org.springframework.data.repository.query.Param;
 
 import com.example.demo.helpers.enums.TransactionStatus;
 import com.example.demo.models.Transaction;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 	List<Transaction> findByFromWalletId(Long fromWalletId); // all the debit transactions
 

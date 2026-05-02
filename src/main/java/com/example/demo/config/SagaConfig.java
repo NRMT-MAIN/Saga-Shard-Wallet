@@ -13,7 +13,7 @@ import java.util.Map;
 public class SagaConfig {
 
     @Bean
-    public final Map<String , SagaStepInterface> SagaStepMap(DebitSourceWalletStep debitSourceWalletStep ,
+    public Map<String , SagaStepInterface> SagaStepMap(DebitSourceWalletStep debitSourceWalletStep ,
                                                              CreditDestinationWalletStep creditDestinationWalletStep ,
                                                              UpdateTransactionStatusStep updateTransactionStatusStep ) {
         return Map.of(

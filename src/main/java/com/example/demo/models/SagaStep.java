@@ -44,6 +44,7 @@ public class SagaStep {
         this.status = StepStatus.FAILED;
     }
 
+
     public void markAsPending() {
         this.status = StepStatus.PENDING;
     }
