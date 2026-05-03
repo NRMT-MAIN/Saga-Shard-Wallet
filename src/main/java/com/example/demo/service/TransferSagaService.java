@@ -40,6 +40,7 @@ public class TransferSagaService {
 
         transactionService.updateTransactionWithSagaInstanceId(transaction.getId(), sagaInstanceId);
 
+        executeTransferSaga(sagaInstanceId);
         return sagaInstanceId ;
     }
 

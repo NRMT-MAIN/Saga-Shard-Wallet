@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.helpers.enums.TransactionStatus;
+import com.example.demo.helpers.enums.TransactionType;
 import com.example.demo.models.Transaction;
 import com.example.demo.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,7 @@ public class TransactionServiceImpl implements ITransactionService{
                 .amount(amount)
                 .description(description)
                 .status(TransactionStatus.PENDING)
+                .type(TransactionType.TRANSFER)
                 .build();
         Transaction savedTransaction = transactionRepository.save(transaction);
         log.info("Transaction created with id {}", savedTransaction.getId());

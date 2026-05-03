@@ -38,21 +38,19 @@ public class WalletServiceImpl implements IWalletService{
     }
 
     @Transactional
-    public void debit(Long walletId, BigDecimal amount) {
-        log.info("Debiting amount {} from wallet {}", amount, walletId);
-        Wallet wallet = getWalletById(walletId);
-        wallet.debit(amount);
-        walletRepository.save(wallet);
-        log.info("Debited amount {} from wallet {}", amount, walletId);
+    public void debit(Long userId, BigDecimal amount) {
+        log.info("Debiting amount {} to wallet {}", amount, userId);
+        Wallet wallet = getWalletsByUserId(userId).get(0);
+        walletRepository.updateBalanceByUserId(userId, wallet.getBalance().subtract(amount));
+        log.info("Debited amount {} to wallet {}", amount, userId);
     }
 
     @Transactional
-    public void credit(Long walletId, BigDecimal amount) {
-        log.info("Crediting amount {} to wallet {}", amount, walletId);
-        Wallet wallet = getWalletById(walletId);
-        wallet.credit(amount);
-        walletRepository.save(wallet);
-        log.info("Credited amount {} to wallet {}", amount, walletId);
+    public void credit(Long userId, BigDecimal amount) {
+        log.info("Crediting amount {} to wallet {}", amount, userId);
+        Wallet wallet = getWalletsByUserId(userId).get(0);
+        walletRepository.updateBalanceByUserId(userId, wallet.getBalance().add(amount));
+        log.info("Credited amount {} to wallet {}", amount, userId);
     }
 
     public BigDecimal getWalletBalance(Long walletId) {

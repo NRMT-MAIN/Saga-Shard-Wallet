@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.example.demo.models.User;
 import com.example.demo.repository.UserRepository;
 
-@Component
+//@Component
 public class UserTestRunner implements CommandLineRunner {
 	@Autowired
 	private UserRepository userRepo ; 
